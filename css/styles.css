@@ -1,0 +1,210 @@
+
+/* Color palette */
+:root {
+  --color-primary: #FFCE54;
+  --color-secondary: #FFFFFF;
+  --color-tertiary: #FFDCA2;
+  --color-text: #fff;
+  --color-background: #fff;
+  --color-text-yellow: #333333;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header design */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  z-index: 1;
+  padding: 0 10px;
+}
+
+.header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.header nav ul {
+  display: flex;
+  list-style: none;
+}
+
+.header nav ul li {
+  margin-right: 20px;
+}
+
+.header nav ul li:last-child {
+  margin-right: 0;
+}
+
+.header nav ul li a, .header .logo {
+  display: block;
+  padding: 10px;
+  color: var(--color-text-yellow);
+  text-decoration: none;
+}
+
+.header .logo {
+  font-weight: bold;
+}
+
+.header nav ul li a:hover {
+  background-color: var(--color-tertiary);
+}
+
+/** End of header design **/
+
+
+/* Footer design */
+footer {
+  background-color: var(--color-primary);
+  color: var(--color-text-yellow);
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  letter-spacing: 1px;
+  font-weight: bold;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/** End of footer design **/
+
+.main {
+  padding: 80px 0px;
+}
+
+.flashcard-container .flashcard-container-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.flashcard {
+  width: calc(33.33% - 20px);
+  margin-bottom: 20px;
+  position: relative;
+  perspective: 1000px;
+}
+
+.flashcard-inner {
+  width: 100%;
+  height: 0;
+  padding-bottom: 150%;
+  position: relative;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+
+.flashcard:hover .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#passage1 .flashcard-front,
+#passage1 .flashcard-back {
+  background-color: #AC92EB ;
+}
+
+#passage2 .flashcard-front,
+#passage2 .flashcard-back {
+  background-color: #4FC1E8  ;
+}
+
+#passage3 .flashcard-front,
+#passage3 .flashcard-back {
+  background-color: #A0D568  ;
+}
+
+#passage4 .flashcard-front,
+#passage4 .flashcard-back {
+  background-color: #ED5564  ;
+}
+
+.flashcard-front {
+  transform: rotateY(0deg);
+}
+
+.flashcard-back {
+  transform: rotateY(180deg);
+  padding: 20px;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--color-text);
+}
+
+.flashcard-keyword {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: var(--color-text);
+}
+
+/* Responsive */
+@media screen and (max-width: 767px) {
+  .flashcard {
+    width: calc(50% - 10px);
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .flashcard {
+    width: 100%;
+  }
+}
+/** End of Responsive **/
+
+/* When the navigation is clicked, the flashcards will highlight */
+.flashcard-container-section:target .flashcard div  {
+  animation-name: flash;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+@keyframes flash {
+    50% {
+        background-color: #F9D56E;
+        opacity: 0.7;
+    }
+}
